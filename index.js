@@ -10,6 +10,12 @@ const app = express()
 
 const conn = require('./db/conn')
 
+
+//Models
+const Tought = require('./models/Tought')
+const User = require('./models/User')
+
+
 //Template engine
 app.engine('handlebars', exphbs.engine())
 app.set('view engine', 'handlebars')
@@ -47,12 +53,12 @@ app.use(
 app.use(express.static('public'))
 
 //set session to res
-app.use((req, res, next => {
+app.use((req, res, next) => {
     if(req.session.userId){
         res.locals.session = req.session
     }
     next()
-}))
+})
 
 // Flash messages
 app.use(flash())
