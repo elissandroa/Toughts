@@ -4,6 +4,9 @@ const session = require('express-session')
 const flash = require('express-flash')
 const FileStore = require('session-file-store')(session)
 
+//Rotes
+const toughtRoutes = require('./routes/toughtRoutes')
+
 const port = 3000
 
 const app = express()
@@ -14,6 +17,9 @@ const conn = require('./db/conn')
 //Models
 const Tought = require('./models/Tought')
 const User = require('./models/User')
+
+// Import Controller
+const ToughtController = require('./controllers/ToughtController')
 
 
 //Template engine
@@ -64,6 +70,10 @@ app.use((req, res, next) => {
 app.use(flash())
 
 
+//Routes
+app.use('/toughts', toughtRoutes)
+
+app.use('/', ToughtController.showToughts)
 
 
 conn.sync()
