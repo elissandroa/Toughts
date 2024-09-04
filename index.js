@@ -6,6 +6,7 @@ const FileStore = require('session-file-store')(session)
 
 //Rotes
 const toughtRoutes = require('./routes/toughtRoutes')
+const authRoutes = require('./routes/authRoutes')
 
 const port = 3000
 
@@ -72,8 +73,10 @@ app.use(flash())
 
 //Routes
 app.use('/toughts', toughtRoutes)
+app.use('/', authRoutes)
 
 app.use('/', ToughtController.showToughts)
+
 
 
 conn.sync()
