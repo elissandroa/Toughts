@@ -38,7 +38,7 @@ module.exports = class AuthController {
 
         req.session.save(() => {
 
-            res.redirect('/')
+            res.redirect('toughts/dashboard')
         })
     }
 

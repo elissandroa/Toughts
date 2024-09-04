@@ -1,8 +1,12 @@
 const express = require('express');
 const ToughtController = require('../controllers/ToughtController');
+const { checkAuth } = require('../helpers/auth');
 const router = express.Router();
+//Helper
+const auth = require('../helpers/auth').checkAuth
 
 
+router.get('/dashboard', checkAuth, ToughtController.dashboard)
 router.get('/', ToughtController.showToughts)
 
 
