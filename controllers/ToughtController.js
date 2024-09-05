@@ -4,7 +4,14 @@ const flash = require('express-flash')
 
 module.exports = class ToughtController {
     static async showToughts(req, res) {
-        res.render('toughts/home')
+        const toughtsData = await Tought.findAll({
+            include: User,
+
+        })
+
+        const toughts = toughtsData.map((result) => result.get({plain:true}))
+
+        res.render('toughts/home', {toughts})
     }
 
     static async dashboard(req, res) {
