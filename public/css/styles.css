@@ -159,6 +159,10 @@ form input[type='submit']:hover,
     list-style: none;
 }
 
+.dashboard a {
+    color: #f6982d;
+}
+
 .dashboard li {
     padding: 12px;
     border-bottom: 1px solid #f6982d;
