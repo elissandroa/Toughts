@@ -67,6 +67,12 @@ module.exports = class ToughtController {
 
     }
 
+    static async updateTought(req, res) {
+        const id = req.params.id
+        const tought = await Tought.findOne({raw:true, where: { id: id } })
+        res.render('toughts/edit', { tought })
+    }
+
     static async removeTought(req, res) {
         const id = req.body.id
         const UserId = req.session.userId
